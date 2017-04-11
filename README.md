@@ -35,11 +35,9 @@ This is smaple the solution script that I made
 #!/bin/bash
 catalina.sh stop
 sleep 1
-
 FDS=`ls -al /proc/$BASHPID/fd | grep socket | grep -v grep | awk '{print $9}'`
 for FD in $FDS; do
   eval "exec $FD>&-"
 done
-
 catalina.sh start
 ```
